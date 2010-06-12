@@ -90,3 +90,8 @@
     (when (file-exists-p (concat defunkt ".el"))
       (load defunkt))))
 (add-to-list 'load-path "~/.emacs.d/vendor")
+
+
+
+(vendor 'textmate)
+(textmate-mode)
