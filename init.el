@@ -95,3 +95,5 @@
 
 (vendor 'textmate)
 (textmate-mode)
+
+(vendor 'open-file-in-github)
