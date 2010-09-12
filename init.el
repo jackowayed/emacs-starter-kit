@@ -97,3 +97,58 @@
 (textmate-mode)
 
 (vendor 'open-file-in-github)
+
+
+(setq org-agenda-files (list "~/Dropbox/org/main.org"
+                             "~/Dropbox/org/school.org" 
+                             "~/Dropbox/org/ruboto.org"))
+
+;; Kills all them buffers except scratch
+;; optained from http://www.chrislott.org/geek/emacs/dotemacs.html
+(defun nuke-all-buffers ()
+  "kill all buffers, leaving *scratch* only"
+  (interactive)
+  (mapcar (lambda (x) (kill-buffer x))
+	  (buffer-list))
+  (delete-other-windows))
+
+(require 'color-theme)
+(require 'dark-theme)
+(dark-theme)
+
+
+(add-to-list 'load-path "~/.emacs.d/vendor/coffee-mode")
+(require 'coffee-mode)
+(add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
+(add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
+
+
+; make markdown-mode not autofill
+(add-hook 'markdown-mode-hook '(lambda () (auto-fill-mode -1)))
+
+
+
+(defun split-dedicated-window (b size)
+  (interactive "BBuffer: \nNLines to show: ")
+  (split-window (selected-window) (+ size 2))
+  (set-window-buffer (selected-window) b)
+  (set-window-dedicated-p (selected-window) t))
+
+(server-start)
+
+;; Turn on tabs
+(setq indent-tabs-mode t)
+(setq-default indent-tabs-mode t)
+
+;; Bind the TAB key 
+(global-set-key (kbd "TAB") 'self-insert-command)
+
+;; Set the tab width
+(setq default-tab-width 4)
+(setq tab-width 4)
+(setq c-basic-indent 4)
+
+
+;(custom-set-variables
+;    '(ispell-dictionary "en")
+;    '(ispell-program-name "/usr/local/bin/aspell"))
