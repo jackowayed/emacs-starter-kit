@@ -99,9 +99,10 @@
 (vendor 'open-file-in-github)
 
 
-(setq org-agenda-files (list "~/Dropbox/org/main.org"
+(setq org-agenda-files (list "~/Dropbox/org/todo.org"
                              "~/Dropbox/org/school.org" 
-                             "~/Dropbox/org/ruboto.org"))
+                                        ;"~/Dropbox/org/ruboto.org"
+                             ))
 
 ;; Kills all them buffers except scratch
 ;; optained from http://www.chrislott.org/geek/emacs/dotemacs.html
@@ -112,9 +113,9 @@
 	  (buffer-list))
   (delete-other-windows))
 
-(require 'color-theme)
-(require 'dark-theme)
-(dark-theme)
+;(require 'color-theme)
+;(require 'dark-theme)
+;(dark-theme)
 
 
 (add-to-list 'load-path "~/.emacs.d/vendor/coffee-mode")
@@ -134,11 +135,11 @@
   (set-window-buffer (selected-window) b)
   (set-window-dedicated-p (selected-window) t))
 
-(server-start)
+;(server-start)
 
 ;; Turn on tabs
-(setq indent-tabs-mode t)
-(setq-default indent-tabs-mode t)
+;(setq indent-tabs-mode t)
+;(setq-default indent-tabs-mode t)
 
 ;; Bind the TAB key 
 (global-set-key (kbd "TAB") 'self-insert-command)
@@ -152,3 +153,7 @@
 ;(custom-set-variables
 ;    '(ispell-dictionary "en")
 ;    '(ispell-program-name "/usr/local/bin/aspell"))
+
+(setq org-mobile-directory "~/Dropbox/mobileorg")
+
+(require 'ess-site)

@@ -5,7 +5,7 @@
       ((background-color . "#000000")
       (background-mode . light)
       (border-color . "#1a1a1a")
-      (cursor-color . "#fce94f")
+      (cursor-color . "#ff0000")
       (foreground-color . "#eeeeec")
       (mouse-color . "black"))
      (fringe ((t (:background "#1a1a1a"))))
