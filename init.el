@@ -161,3 +161,11 @@
 (require 'ess-site)
 
 (server-start)
+
+(add-hook
+ 'org-mode-hook
+ '(lambda ()
+    (add-hook
+     'after-save-hook
+     'org-mobile-push
+    t t)))
