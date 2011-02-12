@@ -159,3 +159,5 @@
 (setq org-mobile-inbox-for-pull "~/Dropbox/mobileorginbox/")
 
 (require 'ess-site)
+
+(server-start)
