@@ -155,5 +155,7 @@
 ;    '(ispell-program-name "/usr/local/bin/aspell"))
 
 (setq org-mobile-directory "~/Dropbox/mobileorg")
+(setq org-directory "~/Dropbox/org")
+(setq org-mobile-inbox-for-pull "~/Dropbox/mobileorginbox/")
 
 (require 'ess-site)
