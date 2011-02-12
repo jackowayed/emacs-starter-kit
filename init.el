@@ -113,9 +113,9 @@
 	  (buffer-list))
   (delete-other-windows))
 
-;(require 'color-theme)
-;(require 'dark-theme)
-;(dark-theme)
+(require 'color-theme)
+(require 'dark-theme)
+(dark-theme)
 
 
 (add-to-list 'load-path "~/.emacs.d/vendor/coffee-mode")
