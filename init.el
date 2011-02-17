@@ -169,3 +169,5 @@
      'after-save-hook
      'org-mobile-push
     t t)))
+
+(setq sentence-end-double-space nil)
