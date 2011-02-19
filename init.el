@@ -171,3 +171,22 @@
     t t)))
 
 (setq sentence-end-double-space nil)
+
+; http://www.emacswiki.org/emacs/IbufferMode
+(require 'ibuffer)
+(setq ibuffer-saved-filter-groups
+      (quote (("default"
+               ("org" (mode . org-mode))
+               ("R" (or
+                     (mode . r-mode)
+                     (mode . ess-mode)
+                     (name . "^\\*ESS\\*$")))
+               ("emacs" (or
+                         (name . "^\\*scratch\\*$")
+                         (name . "^\\*Messages\\*$")))))))
+
+(add-hook 'ibuffer-mode-hook
+          (lambda ()
+            (ibuffer-switch-to-saved-filter-groups "default")))
+
+(global-set-key (kbd "C-x C-b") 'ibuffer)
