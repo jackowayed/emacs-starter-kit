@@ -190,3 +190,10 @@
             (ibuffer-switch-to-saved-filter-groups "default")))
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
+
+(defun system-copy-region ()
+  "Use pbcopy to copy the region on Mac"
+  (interactive)
+  (shell-command-on-region (min (mark) (point)) (max (mark) (point)) "pbcopy"))
+
+(global-set-key (kbd "C-c C-d") 'system-copy-region)
