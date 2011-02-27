@@ -99,8 +99,9 @@
 (vendor 'open-file-in-github)
 
 
-(setq org-agenda-files (list "~/Dropbox/org/todo.org"
-                             "~/Dropbox/org/school.org" 
+(setq org-agenda-files (list "~/Dropbox/org/now.org"
+                             "~/Dropbox/org/soon.org"
+                             "~/Dropbox/org/later.org"
                                         ;"~/Dropbox/org/ruboto.org"
                              ))
 
