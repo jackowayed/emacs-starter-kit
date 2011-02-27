@@ -4,3 +4,6 @@
 [submodule "vendor/open-file-in-github"]
 	path = vendor/open-file-in-github
 	url = git://gist.github.com/170861.git
+[submodule "vendor/word-count-race"]
+	path = vendor/word-count-race
+	url = git://gist.github.com/135586.git

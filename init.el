@@ -198,3 +198,5 @@
   (shell-command-on-region (min (mark) (point)) (max (mark) (point)) "pbcopy"))
 
 (global-set-key (kbd "C-c C-d") 'system-copy-region)
+
+(vendor 'word-count-race)
