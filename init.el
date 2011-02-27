@@ -151,9 +151,9 @@
 (setq c-basic-indent 4)
 
 
-;(custom-set-variables
-;    '(ispell-dictionary "en")
-;    '(ispell-program-name "/usr/local/bin/aspell"))
+(custom-set-variables
+    '(ispell-dictionary "en")
+    '(ispell-program-name "/usr/local/bin/aspell"))
 
 (setq org-mobile-directory "~/Dropbox/mobileorg")
 (setq org-directory "~/Dropbox/org")
