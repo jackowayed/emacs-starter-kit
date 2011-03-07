@@ -125,10 +125,6 @@
 (add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
 
 
-; make markdown-mode not autofill
-(add-hook 'markdown-mode-hook '(lambda () (auto-fill-mode -1)))
-
-
 
 (defun split-dedicated-window (b size)
   (interactive "BBuffer: \nNLines to show: ")
