@@ -200,3 +200,5 @@
 (global-set-key (kbd "C-c C-d") 'system-copy-region)
 
 (vendor 'word-count-race)
+
+(global-set-key (kbd "M-g s") 'magit-status)
