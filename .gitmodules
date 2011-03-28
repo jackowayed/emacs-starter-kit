@@ -7,3 +7,6 @@
 [submodule "vendor/word-count-race"]
 	path = vendor/word-count-race
 	url = git://gist.github.com/135586.git
+[submodule "vendor/coffee-mode"]
+	path = vendor/coffee-mode
+	url = git://github.com/defunkt/coffee-mode.git
