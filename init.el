@@ -198,3 +198,5 @@
 (vendor 'word-count-race)
 
 (global-set-key (kbd "M-g s") 'magit-status)
+
+(require 'haml-mode)
