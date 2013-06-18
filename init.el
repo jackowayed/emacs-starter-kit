@@ -42,7 +42,6 @@
 (require 'ffap)
 (require 'uniquify)
 (require 'ansi-color)
-(require 'recentf)
 
 ;; backport some functionality to Emacs 22 if needed
 (require 'dominating-file)
@@ -155,7 +154,7 @@
 (setq org-directory "~/Dropbox/org")
 (setq org-mobile-inbox-for-pull "~/Dropbox/mobileorginbox/")
 
-(require 'ess-site)
+;(require 'ess-site)
 
 (server-start)
 
@@ -200,3 +199,41 @@
 (global-set-key (kbd "M-g s") 'magit-status)
 
 (require 'haml-mode)
+
+(setq vc-follow-symlinks t)
+
+(recentf-mode 0)
+
+(global-set-key (kbd "M-RET") 'ns-toggle-fullscreen)
+
+(setq mac-option-key-is-meta t)
+(setq mac-command-key-is-meta t)
+(setq mac-modifier-command 'meta)
+(setq mac-option-modifier 'meta)
+
+
+(global-set-key (kbd "M-T") 'textmate-goto-symbol)
+
+(require 'go-mode-load)
+
+(setq sentence-end-double-space nil)
+
+(column-number-mode)
+
+(setq c-default-style "linux"
+      c-basic-offset 4)
+
+(global-set-key (kbd "C-z") 'keyboard-quit)
+
+; http://www.emacswiki.org/emacs/WordCount
+    ;; source: xemacs 20.3
+    (defun count-words-region (start end)
+       (interactive "r")
+       (save-excursion
+          (let ((n 0))
+           (goto-char start)
+           (while (< (point) end)
+             (if (forward-word 1)
+                 (setq n (1+ n))))
+           (message "Region has %d words" n)
+           n)))
