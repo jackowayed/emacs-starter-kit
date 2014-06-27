@@ -25,6 +25,10 @@
 (add-to-list 'load-path dotfiles-dir)
 
 (require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
 (require 'starter-kit-elpa)
 
@@ -98,11 +102,9 @@
 (vendor 'open-file-in-github)
 
 
-(setq org-agenda-files (list "~/Dropbox/org/now.org"
-                             "~/Dropbox/org/soon.org"
-                             "~/Dropbox/org/later.org"
-                                        ;"~/Dropbox/org/ruboto.org"
-                             ))
+(setq org-agenda-files (list "~/org/life.org"
+                             "~/org/to_read.org")
+      org-mobile-force-id-on-agenda-items nil)
 
 ;; Kills all them buffers except scratch
 ;; optained from http://www.chrislott.org/geek/emacs/dotemacs.html
@@ -147,7 +149,7 @@
 
 
 (custom-set-variables
-    '(ispell-dictionary "en")
+    '(ispell-dictionary "en_US")
     '(ispell-program-name "/usr/local/bin/aspell"))
 
 (setq org-mobile-directory "~/Dropbox/mobileorg")
@@ -164,7 +166,35 @@
     (add-hook
      'after-save-hook
      'org-mobile-push
-    t t)))
+     t t)))
+
+(add-hook
+ 'org-mode-hook
+ (lambda () (setq truncate-lines nil)))
+
+; http://definitelyaplug.b0.cx/post/custom-inlined-css-in-org-mode-html-export/
+(defun my-org-inline-css-hook (exporter)
+  "Insert custom inline css"
+  (when (eq exporter 'html)
+    (let* ((dir (ignore-errors (file-name-directory (buffer-file-name))))
+           (path (concat dir "style.css"))
+           (homestyle (or (null dir) (null (file-exists-p path))))
+           (final (if homestyle "~/.emacs.d/org-style.css" path)))
+      (setq org-html-head-include-default-style nil)
+      (setq org-html-head (concat
+                           "<style type=\"text/css\">\n"
+                           "<!--/*--><![CDATA[/*><!--*/\n"
+                           (with-temp-buffer
+                             (insert-file-contents final)
+                             (buffer-string))
+                           "/*]]>*/-->\n"
+                           "</style>\n")))))
+
+(eval-after-load 'ox
+  '(progn
+     (add-hook 'org-export-before-processing-hook 'my-org-inline-css-hook)))
+
+
 
 (setq sentence-end-double-space nil)
 
@@ -206,10 +236,10 @@
 
 (global-set-key (kbd "M-RET") 'ns-toggle-fullscreen)
 
-(setq mac-option-key-is-meta t)
+(setq mac-option-key-is-meta nil)
 (setq mac-command-key-is-meta t)
-(setq mac-modifier-command 'meta)
-(setq mac-option-modifier 'meta)
+(setq mac-command-modifier 'meta)
+(setq mac-option-modifier nil)
 
 
 (global-set-key (kbd "M-T") 'textmate-goto-symbol)
@@ -237,3 +267,24 @@
                  (setq n (1+ n))))
            (message "Region has %d words" n)
            n)))
+
+(require 'ido-vertical-mode)
+(ido-mode 1)
+(ido-vertical-mode 1)
+
+
+;(add-hook 'after-init-hook 'global-company-mode)
+(global-set-key (kbd "<C-tab>") 'company-complete)
+
+;(add-hook 'before-save-hook 'gofmt-before-save)
+;(add-to-list 'load-path "~/code/go/src/github.com/dougm/goflymake")
+;(require 'go-flymake)
+;(require 'go-flycheck)
+;(add-to-list 'load-path "~/code/go/src/github.com/nsf/gocode/emacs-company")
+;(require 'company-go)
+;(add-hook 'go-mode-hook (lambda ()
+;                          (set (make-local-variable 'company-backends) '(company-go))
+;                          (company-mode)))
+
+(setq c-basic-indent 2)
+(setq truncate-lines nil)
